@@ -19,6 +19,7 @@ theme:
   
     # backgrounds
     bg_main:         "#333333"
+    bg_secondary:    "#4a4a4a"
     bg_accent:       "#ff8c00" 
     bg_light:        "#444444"
     surface:         "#555555"
