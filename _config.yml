@@ -147,8 +147,7 @@ nav_links:
   - title: "About Us"
     url: "#about"
 
-# Footer lists
-# (First column now becomes Address in your footer template)
+map_theme_url: "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
 locations:
   - name: "Calgary"
     coordinates: "51.0447, -114.0719"
