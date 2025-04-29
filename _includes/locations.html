@@ -68,15 +68,12 @@
 
   /* ─── MOBILE OVERRIDE (≤600px) ─── */
   @media (max-width: 600px) {
-    /* make the second container (the UL wrapper) truly full-width */
     #locations > .container:last-of-type {
       width: 100% !important;
       max-width: none !important;
       margin: 0 !important;
       padding: 0 1rem !important;
     }
-
-    /* force both default and special lists into a 2-column grid */
     #locations .areas,
     #locations .areas.special-5 {
       display: grid !important;
@@ -85,14 +82,10 @@
       margin: 0 auto;
       padding: 0;
     }
-
-    /* cancel out the desktop-only nth-child positioning */
     #locations .areas.special-5 li {
       grid-column: auto !important;
       grid-row: auto !important;
     }
-
-    /* ensure each item sits in its column */
     #locations .areas li {
       margin-bottom: 0.75rem;
     }
@@ -133,18 +126,28 @@
       {% endfor %}
     ];
 
-    // initialize the map without a fixed view
+    // initialize the map
     const map = L.map("locations-map");
 
-    // add the OpenStreetMap tile layer
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "&copy; OpenStreetMap contributors"
-    }).addTo(map);
+    // pick your tiles URL from config, or default to OSM
+    {% if site.map_theme_url %}
+      var tileUrl = "{{ site.map_theme_url }}";
+    {% else %}
+      var tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+    {% endif %}
 
-    // create markers for each coordinate
+    // always use the same attribution by default
+    var tileOpts = {
+      attribution: "{{ site.map_theme_attribution | default: '&copy; OpenStreetMap contributors' }}"
+    };
+
+    // add the layer
+    L.tileLayer(tileUrl, tileOpts).addTo(map);
+
+    // create markers
     const markers = coords.map(c => L.marker(c).addTo(map));
 
-    // fit the map view to the bounds of all markers, with padding
+    // auto-zoom to fit all
     map.fitBounds(markers.map(m => m.getLatLng()), {
       padding: [40, 40]
     });
