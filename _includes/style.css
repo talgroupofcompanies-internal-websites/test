@@ -24,6 +24,7 @@ html, body {
 
   /* Backgrounds */
   --bg-main:             {{ site.theme.colors.bg_main }};
+  --bg-secondary:        {{ site.theme.colors.bg_secondary }};
   --bg-accent:           {{ site.theme.colors.bg_accent }};
   --bg-light:            {{ site.theme.colors.bg_light }};
   --surface:             {{ site.theme.colors.surface }};
