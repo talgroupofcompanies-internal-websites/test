@@ -50,7 +50,7 @@
     margin-right: 0.5rem;
   }
 
-  /* Special 5-item layout: 5-column grid with offsets */
+  /* Special 5‐item grid */
   #locations .areas.special-5 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -86,13 +86,9 @@
       grid-column: auto !important;
       grid-row: auto !important;
     }
-    #locations .areas li {
-      margin-bottom: 0.75rem;
-    }
   }
 </style>
 
-<!-- Leaflet CSS & JS (no API key needed) -->
 <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
@@ -106,9 +102,10 @@
   </div>
 
   <div class="container">
-    {% assign n = site.locations | size %}
+    {% assign locs = site.locations.location_data %}
+    {% assign n = locs | size %}
     <ul class="areas{% if n == 5 %} special-5{% endif %}">
-      {% for loc in site.locations %}
+      {% for loc in locs %}
         <li>
           <i class="fas fa-map-marker-alt"></i>{{ loc.name }}
         </li>
@@ -119,37 +116,38 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // build the coords array from your config
-    const coords = [
-      {% for loc in site.locations %}
-        [{{ loc.coordinates }}]{% unless forloop.last %},{% endunless %}
+    // pull your array of locations from config
+    const locations = [
+      {% for loc in locs %}
+        { name: "{{ loc.name }}", coords: [{{ loc.coordinates }}] }{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ];
 
-    // initialize the map
+    // init map
     const map = L.map("locations-map");
 
-    // pick your tiles URL from config, or default to OSM
-    {% if site.map_theme_url %}
-      var tileUrl = "{{ site.map_theme_url }}";
+    // tile layer URL from config, or default OSM
+    {% if site.locations.map_theme_url %}
+      var tileUrl = "{{ site.locations.map_theme_url }}";
     {% else %}
       var tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     {% endif %}
 
-    // always use the same attribution by default
-    var tileOpts = {
-      attribution: "{{ site.map_theme_attribution | default: '&copy; OpenStreetMap contributors' }}"
-    };
+    var attribution = "{{ site.locations.map_theme_attribution | default: '&copy; OpenStreetMap contributors' }}";
+    L.tileLayer(tileUrl, { attribution }).addTo(map);
 
-    // add the layer
-    L.tileLayer(tileUrl, tileOpts).addTo(map);
-
-    // create markers
-    const markers = coords.map(c => L.marker(c).addTo(map));
-
-    // auto-zoom to fit all
-    map.fitBounds(markers.map(m => m.getLatLng()), {
-      padding: [40, 40]
+    // single‐config marker color
+    const markerColor = "{{ site.locations.map_marker_color | default: '#3388ff' }}";
+    const markerIcon = L.divIcon({
+      html: `<i class="fas fa-map-marker-alt" style="color: ${markerColor}; font-size:1.5rem;"></i>`,
+      className: "custom-marker-icon",
+      iconAnchor: [10, 20]
     });
+
+    // add markers & collect them for bounds
+    const markers = locations.map(loc => L.marker(loc.coords, { icon: markerIcon }).addTo(map));
+
+    // auto‐fit to all markers
+    map.fitBounds(markers.map(m => m.getLatLng()), { padding: [40, 40] });
   });
 </script>
