@@ -252,8 +252,3 @@ select{
 #job-type::-webkit-scrollbar-thumb {
   background: var(--primary-light); border-radius: var(--border-radius-1);
 }
-/* Submit button sizing */
-#submit-btn {
-  min-width: 220px;
-  padding: 0.75rem 1.5rem;
-}
