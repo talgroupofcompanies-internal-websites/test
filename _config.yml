@@ -160,7 +160,7 @@ locations:
     coordinates: "49.6956, -112.8431"
 
 map:
-  zoom: 8
+  zoom: 6
 
 # Testimonials
 testimonials:
