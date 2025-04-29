@@ -94,7 +94,7 @@ nav {
 }
 
 .card {
-  background: var(--bg-main);
+  background: var(--bg-light);
   border-radius: var(--border-radius-1);
   box-shadow: 0 3px 10px var(--shadow-sm);
   padding: 2rem;
