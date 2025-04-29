@@ -1,55 +1,77 @@
 <style>
-#faq {
-  padding: 4rem 0;
-  background: var(--bg-secondary);
-}
-#faq .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-#faq h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--primary);
-}
+  /* ─── FAQ Section Wrapper ─── */
+  #faq {
+    padding: 4rem 0;
+    background: var(--bg-secondary);
+  }
+  #faq .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  #faq h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary);
+  }
 
-/* ─── Accordion Container ─── */
-.faq-accordion .faq-item {
-  margin-bottom: 1rem;
-  background: var(--surface);
-  overflow: hidden;
-  border: 1px solid var(--accent-color);
-}
+  /* ─── Each Accordion Item ─── */
+  .faq-accordion .faq-item {
+    position: relative;
+    margin-bottom: 1rem;
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--surface);
+  }
 
-/* ─── Remove default marker ─── */
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::marker            { content: none; }
+  /* ─── Remove Default Marker ─── */
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::marker            { content: none; }
 
-/* ─── Summary Bar ─── */
-.faq-item summary {
-  display: block;
-  padding: 1rem;
-  background: var(--bg-main);
-  font-weight: 600;
-  cursor: pointer;
-  border-bottom: 1px solid var(--accent-color);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-}
+  /* ─── Question Bar ─── */
+  .faq-item summary {
+    display: block;
+    padding: 1rem 2.5rem 1rem 1rem; /* extra right padding for chevron */
+    margin: 0;
+    background: var(--bg-main);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+  }
 
-/* ─── Answer Pane ─── */
-.faq-item .faq-answer {
-  display: none;
-  padding: 1rem;
-  background: var(--secondary-bg);
-  border-top: none;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-}
+  /* ─── Chevron Icon via Font Awesome ─── */
+  .faq-item summary::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;           /* use solid style */
+    content: "\f078";           /* fa-chevron-down */
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+    font-size: 0.8em;
+  }
+  .faq-item[open] summary::after {
+    content: "\f077";           /* fa-chevron-up */
+  }
 
-/* ─── Toggle Visibility ─── */
-.faq-item[open] .faq-answer {
-  display: block;
-}
+  /* ─── Answer Panel ─── */
+  .faq-item .faq-answer {
+    display: none;
+    padding: 1rem;
+    background: var(--secondary-bg);
+    border-top: 1px solid var(--accent-color);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  /* ─── Show Answer When Open ─── */
+  .faq-item[open] .faq-answer {
+    display: block;
+  }
 </style>
 
 <section id="faq">
