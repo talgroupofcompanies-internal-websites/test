@@ -139,11 +139,11 @@ hours:
 # Navigation links
 nav_links:
   - title: "Services"
-    url: "#services"
+    url: "#faq"
   - title: "Locations"
     url: "#locations"
   - title: "Moving Tips"
-    url: "#moving-tips"
+    url: "#faq"
   - title: "About Us"
     url: "#about"
 
