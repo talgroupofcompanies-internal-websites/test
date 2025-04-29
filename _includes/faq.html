@@ -1,27 +1,37 @@
 <style>
 #faq {
   padding: 4rem 0;
-  background-color: var(--surface);
+  background: var(--surface); /* or swap in --secondary-bg if that’s your light surface */
 }
+
+/* Container with overall rounding */
 .faq-item {
   margin-bottom: 1rem;
   border: 1px solid var(--accent-color);
-  border-radius: var(--border-radius);   /* rounds all corners */
-  overflow: hidden;                      /* clips children to the rounded corners */
-  background: var(--surface);            /* optional: gives the closed panel a bg */
+  border-radius: var(--border-radius);
+  overflow: hidden;               /* clips both question & answer to the rounded box */
+  background: var(--secondary-bg);
 }
 
-.faq-question {
+/* Top panel: question bar */
+.faq-item summary {
   padding: 1rem;
   background: var(--bg-secondary);
   font-weight: 600;
   cursor: pointer;
+  /* round the top corners of the summary itself */
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
 }
 
+/* Bottom panel: answer area */
 .faq-answer {
   padding: 1rem;
-  background: var(--surface);            /* use your theme color instead of #fff */
+  background: var(--secondary-bg);
   border-top: 1px solid var(--accent-color);
+  /* round just the bottom corners when open */
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
 }
 
 </style>
