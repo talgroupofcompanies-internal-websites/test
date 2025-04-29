@@ -4,10 +4,8 @@
   #faq {
     padding: 4rem 0;
     background: var(--bg-secondary);
-    border-radius: var(--border-radius)!important;
   }
   #faq .container {
-    border-radius: var(--border-radius)!important;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 1rem;
@@ -24,7 +22,7 @@
     margin-bottom: 1rem;
     background: var(--surface);
     border: 1px solid var(--accent-color);
-    border-radius: var(--border-radius)!important;
+    border-radius: var(--border-radius-1);
     overflow: hidden;
   }
 
@@ -34,7 +32,6 @@
 
   /* ─── Question Bar ─── */
   .faq-item summary {
-    border-radius: var(--border-radius)!important;
     position: relative;
     display: block;
     margin: 0;
@@ -47,23 +44,20 @@
 
   /* ─── Round corners appropriately ─── */
   .faq-item:not([open]) summary {
-    border-radius: var(--border-radius)!important;
-    border-top-left-radius:    var(--border-radius);
-    border-top-right-radius:   var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius:var(--border-radius);
+    border-top-left-radius:    var(--border-radius-1);
+    border-top-right-radius:   var(--border-radius-1);
+    border-bottom-left-radius: var(--border-radius-1);
+    border-bottom-right-radius:var(--border-radius-1);
   }
   .faq-item[open] summary {
-    border-radius: var(--border-radius)!important;
-    border-top-left-radius:    var(--border-radius);
-    border-top-right-radius:   var(--border-radius);
+    border-top-left-radius:    var(--border-radius-1);
+    border-top-right-radius:   var(--border-radius-1);
     border-bottom-left-radius: 0;
     border-bottom-right-radius:0;
   }
 
   /* ─── Chevron (Font Awesome) ─── */
   .faq-item summary::after {
-    border-radius: var(--border-radius)!important;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     content: "\f078"; /* down */
@@ -75,21 +69,18 @@
     font-size: 0.9em;
   }
   .faq-item[open] summary::after {
-    border-radius: var(--border-radius)!important;
     content: "\f077"; /* up */
   }
 
   /* ─── Answer Panel ─── */
   .faq-item .faq-answer {
-    border-radius: var(--border-radius)!important;
     display: none;
     padding: 1rem;
     background: var(--secondary-bg);
-    border-bottom-left-radius:  var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius:  var(--border-radius-1);
+    border-bottom-right-radius: var(--border-radius-1);
   }
   .faq-item[open] .faq-answer {
-    border-radius: var(--border-radius)!important;
     display: block;
   }
 </style>
