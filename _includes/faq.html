@@ -1,0 +1,48 @@
+<style>
+#faq {
+  padding: 4rem 0;
+}
+#faq h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  margin-bottom: 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.faq-question {
+  display: block;
+  padding: 1rem;
+  background: var(--secondary-bg);
+  font-weight: 600;
+  cursor: pointer;
+}
+.faq-answer {
+  padding: 1rem;
+  background: #fff;
+  border-top: 1px solid var(--accent-color);
+}
+</style>
+
+<section id="faq">
+  <div class="container">
+    <h2>{{ site.faq_title | default: "FAQs" }}</h2>
+    <div class="faq-accordion">
+      {% for item in site.faq %}
+      <details class="faq-item">
+        <summary class="faq-question">{{ item.question }}</summary>
+        <div class="faq-answer">
+          {{ item.answer }}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
