@@ -1,3 +1,4 @@
+<!-- _includes/faq.html -->
 <style>
   /* ─── Section Wrapper ─── */
   #faq {
@@ -22,7 +23,7 @@
     background: var(--surface);
     border: 1px solid var(--accent-color);
     border-radius: var(--border-radius);
-    overflow: hidden;  /* clip children to the rounded parent box */
+    overflow: hidden;
   }
 
   /* ─── Hide native marker ─── */
@@ -31,24 +32,35 @@
 
   /* ─── Question Bar ─── */
   .faq-item summary {
+    position: relative;
     display: block;
     margin: 0;
-    padding: 1rem 2.5rem 1rem 1rem; /* room for chevron */
+    padding: 1rem 2.5rem 1rem 1rem;
     background: var(--bg-main);
     font-weight: 600;
     cursor: pointer;
     user-select: none;
+  }
 
-    /* explicitly round the top corners */
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
+  /* ─── Round corners appropriately ─── */
+  .faq-item:not([open]) summary {
+    border-top-left-radius:    var(--border-radius);
+    border-top-right-radius:   var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius:var(--border-radius);
+  }
+  .faq-item[open] summary {
+    border-top-left-radius:    var(--border-radius);
+    border-top-right-radius:   var(--border-radius);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius:0;
   }
 
   /* ─── Chevron (Font Awesome) ─── */
   .faq-item summary::after {
     font-family: "Font Awesome 6 Free";
-    font-weight: 900;              /* for solid chevron */
-    content: "\f078";              /* fa-chevron-down */
+    font-weight: 900;
+    content: "\f078"; /* down */
     position: absolute;
     right: 1rem;
     top: 50%;
@@ -57,7 +69,7 @@
     font-size: 0.9em;
   }
   .faq-item[open] summary::after {
-    content: "\f077";              /* fa-chevron-up */
+    content: "\f077"; /* up */
   }
 
   /* ─── Answer Panel ─── */
@@ -65,9 +77,7 @@
     display: none;
     padding: 1rem;
     background: var(--secondary-bg);
-
-    /* explicitly round the bottom corners */
-    border-bottom-left-radius: var(--border-radius);
+    border-bottom-left-radius:  var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
   }
   .faq-item[open] .faq-answer {
@@ -80,12 +90,12 @@
     <h2>{{ site.faq_title | default: "FAQs" }}</h2>
     <div class="faq-accordion">
       {% for item in site.faq %}
-      <details class="faq-item">
-        <summary class="faq-question">{{ item.question }}</summary>
-        <div class="faq-answer">
-          {{ item.answer }}
-        </div>
-      </details>
+        <details class="faq-item">
+          <summary class="faq-question">{{ item.question }}</summary>
+          <div class="faq-answer">
+            {{ item.answer }}
+          </div>
+        </details>
       {% endfor %}
     </div>
   </div>
