@@ -126,16 +126,27 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // build the coords array from your config
     const coords = [
       {% for loc in site.locations %}
         [{{ loc.coordinates }}]{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ];
-    const zoomLevel = {{ site.map.zoom }};
-    const map = L.map("locations-map").setView(coords[0], zoomLevel);
+
+    // initialize the map without a fixed view
+    const map = L.map("locations-map");
+
+    // add the OpenStreetMap tile layer
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; OpenStreetMap contributors"
     }).addTo(map);
-    coords.forEach(c => L.marker(c).addTo(map));
+
+    // create markers for each coordinate
+    const markers = coords.map(c => L.marker(c).addTo(map));
+
+    // fit the map view to the bounds of all markers, with padding
+    map.fitBounds(markers.map(m => m.getLatLng()), {
+      padding: [40, 40]
+    });
   });
 </script>
