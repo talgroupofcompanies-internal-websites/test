@@ -18,10 +18,10 @@ theme:
   colors:
   
     # backgrounds
-    bg_main:         "#222222"
+    bg_main:         "#333333"
     bg_accent:       "#ff8c00" 
-    bg_light:        "#222222"
-    surface:         "#444444"
+    bg_light:        "#444444"
+    surface:         "#555555"
 
     # Primary / Accent
     primary:         "#ff8c00"    # your bright orange
