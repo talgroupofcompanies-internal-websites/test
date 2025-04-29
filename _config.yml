@@ -86,9 +86,13 @@ about:
         crew guarantee a hassle-free experience. Whether you need full-service
         packing or just heavy-lifting help, we tailor our offerings to your needs.
 
-cta:
+cta-1:
   title: "Call To Action Title Here"
   text: "Replace me with a short call-to-action message."
+  button: "Button Text Here"
+
+cta-2:
+  title: "Call To Action Title Here"
   button: "Button Text Here"
 
 # Quote form
