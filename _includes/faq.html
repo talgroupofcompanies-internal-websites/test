@@ -1,58 +1,45 @@
 <style>
-#faq .faq-item {
-  margin-bottom: 1rem;
-  border: 1px solid var(--accent-color);
-  border-radius: var(--border-radius);
-  overflow: hidden;               /* clips children into that rounded box */
-  background: var(--secondary-bg);
+.faq-accordion details.faq-item {
+  border: 1px solid var(--accent-color) !important;
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+  background: var(--secondary-bg) !important;
 }
 
-/* Make <summary> full-width & strip browser default marker */
-#faq .faq-item > summary {
-  display: block;
-  list-style: none;
-  margin: 0;
-  padding: 1rem;
-  background: var(--bg-secondary);
-  cursor: pointer;
-}
-/* Hide the native ▾ marker */
-#faq .faq-item > summary::-webkit-details-marker,
-#faq .faq-item > summary::-moz-list-bullet {
-  display: none;
+.faq-accordion details.faq-item > summary.faq-question {
+  display: block !important;
+  list-style: none !important;             /* kill default marker/indent */
+  margin: 0 !important;
+  padding: 1rem !important;
+  background: var(--bg-secondary) !important;
+  cursor: pointer !important;
+  border: none !important;                  /* rely on container’s border */
 }
 
-/* Add our own arrow and rotate it on open */
-#faq .faq-item > summary::before {
-  content: '▶';
-  display: inline-block;
-  margin-right: 0.5rem;
-  transition: transform 0.2s ease-in-out;
-}
-#faq .faq-item[open] > summary::before {
-  transform: rotate(90deg);
+.faq-accordion details.faq-item > summary.faq-question::-webkit-details-marker,
+.faq-accordion details.faq-item > summary.faq-question::-moz-list-bullet {
+  display: none !important;
 }
 
-/* Closed state: summary rounded on all corners */
-#faq .faq-item:not([open]) > summary {
-  border-radius: var(--border-radius);
-  border-bottom: none;
+/* Closed = round all corners of the summary bar */
+.faq-accordion details.faq-item:not([open]) > summary.faq-question {
+  border-radius: var(--border-radius) !important;
 }
 
-/* Open state: round only top corners of summary */
-#faq .faq-item[open] > summary {
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  border-bottom: 1px solid var(--accent-color);
+/* Open = round only the top corners of the summary bar */
+.faq-accordion details.faq-item[open] > summary.faq-question {
+  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  border-bottom: 1px solid var(--accent-color) !important;
 }
 
-/* Answer panel */
-#faq .faq-item .faq-answer {
-  padding: 1rem;
-  background: var(--secondary-bg);
-  border-top: 1px solid var(--accent-color);
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-} 
+/* Answer panel = theme bg + bottom corners rounded */
+.faq-accordion details.faq-item .faq-answer {
+  padding: 1rem !important;
+  background: var(--secondary-bg) !important;
+  border-top: 1px solid var(--accent-color) !important;
+  border-bottom-left-radius: var(--border-radius) !important;
+  border-bottom-right-radius: var(--border-radius) !important;
+}
 </style>
 
 <section id="faq">
