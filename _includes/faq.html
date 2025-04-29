@@ -22,7 +22,7 @@
     background: var(--surface);
     border: 1px solid var(--accent-color);
     border-radius: var(--border-radius);
-    overflow: hidden;  /* ensures children respect the rounding */
+    overflow: hidden;  /* clip children to the rounded parent box */
   }
 
   /* ─── Hide native marker ─── */
@@ -38,6 +38,10 @@
     font-weight: 600;
     cursor: pointer;
     user-select: none;
+
+    /* explicitly round the top corners */
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
   }
 
   /* ─── Chevron (Font Awesome) ─── */
@@ -61,6 +65,10 @@
     display: none;
     padding: 1rem;
     background: var(--secondary-bg);
+
+    /* explicitly round the bottom corners */
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
   }
   .faq-item[open] .faq-answer {
     display: block;
