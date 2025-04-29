@@ -162,7 +162,8 @@ locations:
     coordinates: "51.1784, -115.5708"
   - name: "Lethbridge"
     coordinates: "49.6956, -112.8431"
-
+    
+faq_title: "FAQs & Moving Tips"
 faq:
   - question: "What is your pricing structure?"
     answer: "Our pricing is based on the size of the move, distance, and any special handling fees (e.g. pianos). We’ll provide a full breakdown on your estimate."
