@@ -131,7 +131,8 @@
         [{{ loc.coordinates }}]{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ];
-    const map = L.map("locations-map").setView(coords[0], 11);
+    const zoomLevel = {{ site.map.zoom }};
+    const map = L.map("locations-map").setView(coords[0], zoomLevel);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; OpenStreetMap contributors"
     }).addTo(map);
