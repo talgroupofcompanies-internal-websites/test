@@ -1,78 +1,58 @@
 <style>
-#faq {
-  padding: 4rem 0;
-  background: var(--bg-secondary); /* or swap in --secondary-bg if that’s your light surface */
-}
-
-/* Container with overall rounding */
-.faq-item {
+#faq .faq-item {
   margin-bottom: 1rem;
   border: 1px solid var(--accent-color);
   border-radius: var(--border-radius);
-  overflow: hidden;               /* clips both question & answer to the rounded box */
-  background: var(--surface);
+  overflow: hidden;               /* clips children into that rounded box */
+  background: var(--secondary-bg);
 }
 
-/* Top panel: question bar */
-.faq-item summary {
+/* Make <summary> full-width & strip browser default marker */
+#faq .faq-item > summary {
+  display: block;
+  list-style: none;
+  margin: 0;
   padding: 1rem;
-  background: var(--bg-main);
-  font-weight: 600;
+  background: var(--bg-secondary);
   cursor: pointer;
-  /* round the top corners of the summary itself */
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
+}
+/* Hide the native ▾ marker */
+#faq .faq-item > summary::-webkit-details-marker,
+#faq .faq-item > summary::-moz-list-bullet {
+  display: none;
 }
 
-/* Bottom panel: answer area */
-.faq-answer {
+/* Add our own arrow and rotate it on open */
+#faq .faq-item > summary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+#faq .faq-item[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+/* Closed state: summary rounded on all corners */
+#faq .faq-item:not([open]) > summary {
+  border-radius: var(--border-radius);
+  border-bottom: none;
+}
+
+/* Open state: round only top corners of summary */
+#faq .faq-item[open] > summary {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+/* Answer panel */
+#faq .faq-item .faq-answer {
   padding: 1rem;
   background: var(--secondary-bg);
   border-top: 1px solid var(--accent-color);
-  /* round just the bottom corners when open */
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-}
-
-  /* 1. Make sure the <summary> covers its container and drops the UA marker list-style */
-.faq-item summary {
-  display: block;
-  list-style: none;       /* remove default bullet/indent */
-  margin: 0;              /* reset any user-agent margins */
-  padding: 1rem;          /* keep your padding here */
-  cursor: pointer;
-}
-
-/* 2. Always round the outer details container */
-.faq-item {
-  border-radius: var(--border-radius);
-  overflow: hidden;
-}
-
-/* 3. Collapsed state: round *all* corners on the summary bar */
-.faq-item:not([open]) > summary {
-  border-radius: var(--border-radius);
-}
-
-/* 4. Open state: round only the top corners of the summary */
-.faq-item[open] > summary {
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-}
-
-/* 5. Answer pane: use theme bg + round bottom corners when open */
-.faq-answer {
-  padding: 1rem;
-  background: var(--secondary-bg);  /* or whatever surface var you prefer */
-  border-top: 1px solid var(--accent-color);
-}
-
-/* 6. Round bottom of the answer area on open */
-.faq-item[open] .faq-answer {
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-}
-
-  
+} 
 </style>
 
 <section id="faq">
