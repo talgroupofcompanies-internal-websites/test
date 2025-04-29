@@ -86,6 +86,11 @@ about:
         crew guarantee a hassle-free experience. Whether you need full-service
         packing or just heavy-lifting help, we tailor our offerings to your needs.
 
+cta:
+  title: "Call To Action Title Here"
+  text: "Replace me with a short call-to-action message."
+  button: "Button Text Here"
+
 # Quote form
 quote:
   submission_url: "https://shadow-seagull-4892.twil.io/submit_quote_request"
