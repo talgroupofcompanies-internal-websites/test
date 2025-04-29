@@ -147,7 +147,7 @@ nav_links:
   - title: "About Us"
     url: "#about"
 
-map_theme_url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+map_theme_url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
 locations:
   - name: "Calgary"
     coordinates: "51.0447, -114.0719"
