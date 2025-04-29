@@ -1,44 +1,54 @@
 <style>
-.faq-accordion details.faq-item {
-  border: 1px solid var(--accent-color) !important;
-  border-radius: var(--border-radius) !important;
-  overflow: hidden !important;
-  background: var(--secondary-bg) !important;
+#faq {
+  padding: 4rem 0;
+  background: var(--bg-secondary);
+}
+#faq .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+#faq h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
 }
 
-.faq-accordion details.faq-item > summary.faq-question {
-  display: block !important;
-  list-style: none !important;             /* kill default marker/indent */
-  margin: 0 !important;
-  padding: 1rem !important;
-  background: var(--bg-secondary) !important;
-  cursor: pointer !important;
-  border: none !important;                  /* rely on container’s border */
+/* ─── Accordion Container ─── */
+.faq-accordion .faq-item {
+  margin-bottom: 1rem;
+  background: var(--surface);
+  overflow: hidden;
+  border: 1px solid var(--accent-color);
 }
 
-.faq-accordion details.faq-item > summary.faq-question::-webkit-details-marker,
-.faq-accordion details.faq-item > summary.faq-question::-moz-list-bullet {
-  display: none !important;
+/* ─── Remove default marker ─── */
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker            { content: none; }
+
+/* ─── Summary Bar ─── */
+.faq-item summary {
+  display: block;
+  padding: 1rem;
+  background: var(--bg-main);
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 1px solid var(--accent-color);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-/* Closed = round all corners of the summary bar */
-.faq-accordion details.faq-item:not([open]) > summary.faq-question {
-  border-radius: var(--border-radius) !important;
+/* ─── Answer Pane ─── */
+.faq-item .faq-answer {
+  display: none;
+  padding: 1rem;
+  background: var(--secondary-bg);
+  border-top: none;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
-/* Open = round only the top corners of the summary bar */
-.faq-accordion details.faq-item[open] > summary.faq-question {
-  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
-  border-bottom: 1px solid var(--accent-color) !important;
-}
-
-/* Answer panel = theme bg + bottom corners rounded */
-.faq-accordion details.faq-item .faq-answer {
-  padding: 1rem !important;
-  background: var(--secondary-bg) !important;
-  border-top: 1px solid var(--accent-color) !important;
-  border-bottom-left-radius: var(--border-radius) !important;
-  border-bottom-right-radius: var(--border-radius) !important;
+/* ─── Toggle Visibility ─── */
+.faq-item[open] .faq-answer {
+  display: block;
 }
 </style>
 
