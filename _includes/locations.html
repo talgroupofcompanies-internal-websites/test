@@ -137,9 +137,10 @@
     L.tileLayer(tileUrl, { attribution }).addTo(map);
 
     // single‐config marker color
+    const markerIcon = "{{ site.locations.map_marker_icon | default: 'fa-solid fa-location-pin' }}"
     const markerColor = "{{ site.locations.map_marker_color | default: '#3388ff' }}";
     const markerIcon = L.divIcon({
-      html: `<i class="fa-solid fa-truck-moving" style="color: ${markerColor}; font-size:2.5rem; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));"></i>`,
+      html: `<i class="${markerIcon}" style="color: ${markerColor}; font-size:2.5rem; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));"></i>`,
       className: "custom-marker-icon",
       iconAnchor: [10, 20]
     });
