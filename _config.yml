@@ -163,6 +163,14 @@ locations:
   - name: "Lethbridge"
     coordinates: "49.6956, -112.8431"
 
+faq:
+  - question: "What is your pricing structure?"
+    answer: "Our pricing is based on the size of the move, distance, and any special handling fees (e.g. pianos). We’ll provide a full breakdown on your estimate."
+  - question: "How do I request a quote?"
+    answer: "Simply fill out the form at the top of the page with your move details and we’ll call or text you back within 1 business day."
+  - question: "What areas do you serve?"
+    answer: "We cover the entire GTA, including Toronto, Mississauga, Brampton, Oakville and surrounding regions."
+
 # Testimonials
 testimonials:
   - text: "Fast, friendly, and professional service from start to finish!"
