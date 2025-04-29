@@ -41,7 +41,7 @@ theme:
     # Accents & states
     accent:          "#ff8c00"    # same as primary
     accent_dark:     "#e67e00"
-    border:          "#666666"    # for input & button outlines
+    border:          "#ff8c00"    # for input & button outlines
     error:           "#ff4d4d"
     delete:          "#ff4d4d"
 
