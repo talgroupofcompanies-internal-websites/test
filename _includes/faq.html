@@ -34,6 +34,45 @@
   border-bottom-right-radius: var(--border-radius);
 }
 
+  /* 1. Make sure the <summary> covers its container and drops the UA marker list-style */
+.faq-item summary {
+  display: block;
+  list-style: none;       /* remove default bullet/indent */
+  margin: 0;              /* reset any user-agent margins */
+  padding: 1rem;          /* keep your padding here */
+  cursor: pointer;
+}
+
+/* 2. Always round the outer details container */
+.faq-item {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* 3. Collapsed state: round *all* corners on the summary bar */
+.faq-item:not([open]) > summary {
+  border-radius: var(--border-radius);
+}
+
+/* 4. Open state: round only the top corners of the summary */
+.faq-item[open] > summary {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* 5. Answer pane: use theme bg + round bottom corners when open */
+.faq-answer {
+  padding: 1rem;
+  background: var(--secondary-bg);  /* or whatever surface var you prefer */
+  border-top: 1px solid var(--accent-color);
+}
+
+/* 6. Round bottom of the answer area on open */
+.faq-item[open] .faq-answer {
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+  
 </style>
 
 <section id="faq">
