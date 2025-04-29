@@ -147,7 +147,7 @@ nav_links:
   - title: "About Us"
     url: "#about"
 
-map_theme_url: "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+map_theme_url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
 locations:
   - name: "Calgary"
     coordinates: "51.0447, -114.0719"
