@@ -149,7 +149,7 @@ nav_links:
 
 locations:
   map_theme_url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
-  map_marker_icon: "fa-solid fa-location-pin"
+  map_marker_icon: "fa-solid fa-location-dot"
   map_marker_color: "#ff8c00"
   location_data:
     - name: "Calgary"
